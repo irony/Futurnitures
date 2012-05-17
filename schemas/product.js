@@ -8,7 +8,18 @@ var ProductSchema = new Schema({
       , description : String
       , image       : String
       , url         : String
+      , width       : String
+      , length      : String
+      , height      : String
+      , form        : String
+      , color       : String
+      , finish      : String
+      , material    : String
+      , articleNumber : String
+      , designer    : String
+      , source      : String
       , date        : Date
+      , updated     : Date
 },
 {
     display: {

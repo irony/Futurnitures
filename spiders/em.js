@@ -1,8 +1,9 @@
 var nodeio = require('node.io');
+var MongoSpider = require('./mongospider').job;
 
-exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true }, {
+exports.job = MongoSpider.extend({
     input: [
-    "http://www.em.com/web/mobler_heminredning_vardagsrum.aspx",
+    "http://www.em.com/produkter?PageSize=all",
     
     ],
 
@@ -24,6 +25,9 @@ exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true
                 product.url = baseUrl + ($(this).find('.for-screen a').attr('href') || '').replace('~', '');
                 product.name = $(this).find('.for-screen a').text().trim();
                 product.price = $(this).find('.list_price').text().trim();
+                product.source = search_page;
+                
+                product.id = product.url.split('article=')[1];
                 
             });
             console.log(output);

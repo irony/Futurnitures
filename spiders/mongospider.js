@@ -10,7 +10,7 @@ exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true
                 
         var conn = mongoose.connect('mongodb://localhost/furniture');
         
-        var ProductModel = conn.model('Product', require('../schemas/product').product);
+        var ProductModel = conn.model('Product', require('../schemas/product'));
         
         var saved = 0;
             
