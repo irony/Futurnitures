@@ -1,0 +1,38 @@
+	
+<td>
+    <a href="#/product/edit?id=<%=item.id%>"><i class="icon-edit"></i></a>
+    <a href="#/product/delete?id=<%=item.id%>"><i class="icon-remove"></i></a>
+
+</td>
+
+<td><a href="<%= item.get('url') %>"><img src="<%= item.get('image') %>"></a></td>
+
+<td colspan="5"><h2><%= item.get('name') %></h2>
+<p><%= item.get('description') %></p>	
+	
+</td>
+
+<td><%= item.get('width') %></td>
+
+<td><%= item.get('length') %></td>
+
+<td><%= item.get('height') %></td>
+
+<td><%= item.get('form') %></td>
+
+<td><%= item.get('color') %></td>
+
+<td><%= item.get('finish') %></td>
+
+<td><%= item.get('material') %></td>
+
+<td><%= item.get('articleNumber') %></td>
+
+<td><%= item.get('designer') %></td>
+
+<td><%= item.get('source') %></td>
+
+<td><%= item.get('date') %></td>
+
+<td><%= item.get('updated') %></td>
+

@@ -7,6 +7,7 @@ exports.job = MongoSpider.extend({
     	var self = this;
 	    var product = {};
 	    product.name = 'test';
+	    product.updated = '2012-05-25';
         self.emit([product]);
 
     }

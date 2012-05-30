@@ -1,1 +1,11 @@
-{"plugins":{"appeditor":{"title":"Furnitures","description":null,"version":"0.0.1","models":null,"plugins":["static","appeditor","modeleditor","less","generator","rest","mongoose","package"]}}}
+{
+    "plugins": {
+        "appeditor": {
+            "title": "Futurnitures",
+            "description": null,
+            "version": "0.0.1",
+            "models": null,
+            "plugins": ["static", "appeditor", "modeleditor", "less", "generator", "rest", "mongoose", "package"]
+        }
+    }
+}

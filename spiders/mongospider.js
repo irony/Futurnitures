@@ -1,7 +1,8 @@
 var nodeio = require('node.io');
 var mongoose = require('mongoose');
+var Product = require('../schemas/product');
 
-exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true }, {
+exports.job = new nodeio.Job({max: 5, retries: 1, auto_retry: false, jsdom: true }, {
     
     output : function (products) {
         // console.log('output:', products);
@@ -10,12 +11,10 @@ exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true
                 
         var conn = mongoose.connect('mongodb://localhost/furniture');
         
-        var ProductModel = conn.model('Product', require('../schemas/product'));
-        
         var saved = 0;
             
         products.forEach(function(product){
-           var newProduct = new ProductModel(product);
+           var newProduct = new Product(product);
            
            newProduct.date = new Date();
            
