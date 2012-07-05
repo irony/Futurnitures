@@ -12,7 +12,7 @@ exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true
         var conn = mongoose.connect('mongodb://localhost/furniture');
         var self = this;
         
-        Product.find({'url' : { $ne: null}, 'updated' : null}, function(err, data){
+        Product.find({'url' : { $ne: null}, 'updated' : {$lte : new Date() - 1}}, function(err, data){
             
            console.log('found %d matching products', data.length);
            callback(data); 
@@ -75,6 +75,8 @@ exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true
             product.description = $('.articleDescription p').text();
             
             product.images = [];
+            product.updated = Date();
+
             
             if ($('.articleSidebar img')){
                 
@@ -83,14 +85,14 @@ exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true
                     var src =$(this).attr('src');
                     
                     var image = new Image({url: src});
-                    
-                    console.log(image);
-
-                    product.images.push(image);
+                    image.save(function(){
+                        console.log(image);
+                        product.images.push(image);
+                        product.save();
+                    });
                 });
             }
             
-            product.updated = Date();
     
             console.log('saving..');
                 
@@ -101,7 +103,7 @@ exports.job = new nodeio.Job({max: 1, retries: 1, auto_retry: false, jsdom: true
             
         });
         
-        self.exit();     
+       // self.exit();     
     }
 });
 

@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var express = require('express')
+var express = require('express'),
   spiders = require('./spiders'),
   mongoose = require('mongoose'),
   Product = require('./schemas/product'),
@@ -19,22 +19,22 @@ app.configure(function(){
 //  app.set('view engine', 'jade');
   app.use(express.bodyParser());
       app.use(express.cookieParser());
-          app.use(express.session({secret:'super duper secret'}))
+          app.use(express.session({secret:'super duper secret'}));
 
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
-  app.use(bobamo.express({mongoose:mongoose, authModel:User}, express))
+  app.use(bobamo.express({mongoose:mongoose, authModel:User}, express));
 
 });
 
-app.configure('development', function(){ 
-  app.use(bobamo.express({plugin: 'session', uri:'mongodb://localhost/furniture'}))
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+app.configure('development', function(){
+  app.use(bobamo.express({plugin: 'session', uri:'mongodb://localhost/furniture'}));
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
-  app.use(express.errorHandler()); 
+  app.use(express.errorHandler());
 });
 
 // Routes
