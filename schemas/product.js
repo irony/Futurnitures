@@ -49,7 +49,7 @@ var ProductSchema = new Schema({
                 ]
             },
             {
-                legend: 'Design',
+                legend: 'Design and form',
                 help: 'Materials, form and finish',
                 fields: [
                     'material', 'form', 'finish', 'designer', 'images'

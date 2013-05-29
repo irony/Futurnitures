@@ -31,9 +31,9 @@ exports.job = new nodeio.Job({max: 5, retries: 1, auto_retry: false, jsdom: true
               }
               if (saved >= products.length)
                 self.exit();
-           }); 
-        });    
-        
+           });
+        });
+                
         // this.exit();
         
     }

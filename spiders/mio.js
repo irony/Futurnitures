@@ -5,14 +5,14 @@ exports.job = MongoSpider.extend({
     input: ["http://www.mio.se/Hela-sortimentet/Belysning/Bordlampor/?ShowAllPages=true&selectedPageIndex1=4&selectedPageIndex2=0&selectedPageIndex3=0&SelectedFilterIndex=all"],
 
     run: function (search_page) {
-    	var self = this;
+        var self = this;
         this.getHtml(search_page, function(err, $) {
 
-		    //Handle any request / parsing errors
-	        if (err) this.exit(err);
+            //Handle any request / parsing errors
+        if (err) this.exit(err);
 
 			var baseUrl = search_page.split('/').splice(0, 3).join('/');    // extract host name from url ending with /
-			    
+
             //Scrape products on the page and emit
             var products = [];
             

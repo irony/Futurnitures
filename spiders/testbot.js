@@ -6,6 +6,8 @@ exports.job = MongoSpider.extend({
     run: function (search_page) {
     	var self = this;
 	    var product = {};
+
+      debugger;
 	    product.name = 'test';
 	    product.updated = '2012-05-25';
         self.emit([product]);
